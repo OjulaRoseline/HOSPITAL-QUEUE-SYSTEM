@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hospital Queue Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body class="bg-sky-50 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-navy text-white px-8 py-5 flex justify-between items-center flex-wrap gap-4 shadow-lg">
+    <h1 class="text-2xl font-bold tracking-wide"> Hospital Queue Management System</h1>
+    <div class="flex gap-4">
+      <div class="stat-box">
+        <span id="total-count">0</span>
+        <label>Total</label>
+      </div>
+      <div class="stat-box waiting-box">
+        <span id="waiting-count">0</span>
+        <label>Waiting</label>
+      </div>
+      <div class="stat-box treated-box">
+        <span id="treated-count">0</span>
+        <label>Treated</label>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-5xl mx-auto py-8 px-4 flex flex-col gap-6">
+
+    <!-- REGISTER FORM -->
+    <section class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-sky-400">
+      <h2 id="form-title" class="text-navy font-bold text-lg mb-4">➕ Register New Patient</h2>
+      <div class="flex flex-wrap gap-3">
+        <input type="text" id="name" placeholder="Full Name"
+          class="flex-1 min-w-[160px] border-2 border-sky-200 rounded-lg px-4 py-2 focus:outline-none focus:border-sky-500"/>
+        <input type="number" id="age" placeholder="Age" min="1"
+          class="flex-1 min-w-[100px] border-2 border-sky-200 rounded-lg px-4 py-2 focus:outline-none focus:border-sky-500"/>
+        <input type="text" id="condition" placeholder="Medical Condition"
+          class="flex-1 min-w-[160px] border-2 border-sky-200 rounded-lg px-4 py-2 focus:outline-none focus:border-sky-500"/>
+        <button id="submit-btn" onclick="submitPatient()" class="btn-primary">
+          Add Patient
+        </button>
+        <button id="cancel-btn" onclick="cancelEdit()" class="btn-cancel hidden">
+          Cancel
+        </button>
+      </div>
+      <div id="form-message" class="mt-3 text-sm font-medium"></div>
+    </section>
+
+    <!-- SEARCH & FILTER -->
+    <section class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-sky-400">
+      <h2 class="text-navy font-bold text-lg mb-4"> Search & Filter</h2>
+      <div class="flex flex-wrap gap-3">
+        <input type="text" id="search-input" placeholder="Search by name or condition..."
+          oninput="filterPatients()"
+          class="flex-1 min-w-[200px] border-2 border-sky-200 rounded-lg px-4 py-2 focus:outline-none focus:border-sky-500"/>
+        <select id="status-filter" onchange="filterPatients()"
+          class="border-2 border-sky-200 rounded-lg px-4 py-2 focus:outline-none focus:border-sky-500 bg-white text-navy">
+          <option value="all">All Patients</option>
+          <option value="Waiting">Waiting</option>
+          <option value="Treated">Treated</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- PATIENT TABLE -->
+    <section class="bg-white rounded-2xl shadow-md p-6 border-t-4 border-sky-400">
+      <h2 class="text-navy font-bold text-lg mb-4"> Patient Queue</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-navy text-white">
+            <tr>
+              <th class="px-4 py-3 text-left rounded-tl-lg">ID</th>
+              <th class="px-4 py-3 text-left">Name</th>
+              <th class="px-4 py-3 text-left">Age</th>
+              <th class="px-4 py-3 text-left">Condition</th>
+              <th class="px-4 py-3 text-left">Status</th>
+              <th class="px-4 py-3 text-left rounded-tr-lg">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="patient-tbody"></tbody>
+        </table>
+        <p id="no-patients" class="text-center text-sky-300 py-8 text-base">
+          No patients registered yet.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

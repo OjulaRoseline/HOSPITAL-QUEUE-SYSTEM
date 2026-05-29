@@ -1,0 +1,202 @@
+/* ── FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ── CUSTOM VARIABLES ── */
+:root {
+  --navy: #0a2342;
+  --sky: #38bdf8;
+  --sky-light: #e0f2fe;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #1e293b;
+}
+
+/* ── HEADINGS ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+}
+
+/* ── TAILWIND CUSTOM COLOUR HELPERS ── */
+.bg-navy { background-color: var(--navy); }
+.text-navy { color: var(--navy); }
+.border-navy { border-color: var(--navy); }
+
+/* ── HEADER STAT BOXES ── */
+.stat-box {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px 20px;
+  text-align: center;
+  min-width: 78px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.stat-box span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-heading);
+}
+
+.stat-box label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-body);
+}
+
+.waiting-box { background: rgba(56, 189, 248, 0.25); }
+.treated-box { background: rgba(255, 255, 255, 0.2); }
+
+/* ── TABLE HEADER ── */
+thead th {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background-color: var(--navy);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background-color: #0d2f5e;
+  transform: translateY(-1px);
+}
+
+.btn-cancel {
+  background-color: #94a3b8;
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancel:hover { background-color: #64748b; }
+
+/* ── TABLE ── */
+tbody tr {
+  border-bottom: 1px solid #e0f2fe;
+  transition: background 0.15s;
+}
+
+tbody tr:hover { background-color: #f0f9ff; }
+
+td {
+  padding: 12px 16px;
+  color: #1e293b;
+  font-family: var(--font-body);
+}
+
+/* ── STATUS BADGES ── */
+.badge {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-block;
+  letter-spacing: 0.03em;
+  font-family: var(--font-body);
+}
+
+.badge.waiting {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badge.treated {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ── ACTION BUTTONS ── */
+.btn-treat {
+  background-color: #0ea5e9;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+}
+.btn-treat:hover { background-color: #0284c7; }
+
+.btn-edit {
+  background-color: var(--navy);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+}
+.btn-edit:hover { background-color: #0d2f5e; }
+
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+}
+.btn-delete:hover { background-color: #dc2626; }
+
+/* ── FORM MESSAGES ── */
+.success { color: #15803d; font-family: var(--font-body); }
+.error { color: #dc2626; font-family: var(--font-body); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transition: opacity 0.4s;
+}
+
+.success-toast { background: #0ea5e9; }
+.error-toast { background: #ef4444; }
+.hidden { display: none !important; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  header { flex-direction: column; text-align: center; }
+  .stat-box { min-width: 65px; }
+}
