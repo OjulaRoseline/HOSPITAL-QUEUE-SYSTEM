@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:5000/api/patients";
+const API = window.location.origin + "/api/patients";
 let allPatients = [];
 let editingId = null;
 
